@@ -15,11 +15,26 @@ const getUser = async (req, res) => {
 };
 
 const addUser = async (req, res) => {
-  res.status(201).send({ message: "User added" });
+  const {email, name, phoneNumber} = req.body;
+  try {
+    const response = await User.create({email, name, phoneNumber})
+    res.send({message: "New User Successfully added", newUser : response})
+  } catch (error) {
+    console.log(error)
+    res.status(500).send({message : "Oops...Something when wrong while creating a new user"})
+  }
 };
 
 const updateUser = async (req, res) => {
-  res.send({ message: `prperty with the id ${req.params.id} updated` });
+  const {email, name, phoneNumber} = req.body;
+  const {id} = req.params;
+  try {
+    const response = await User.findOneAndUpdate({_id: id}, {email, name, phoneNumber}, {new: true});
+    res.send(response)
+  } catch (error) {
+    res.status(500).send({message: "Oops...something went wrong updating the user"})
+    console.log(error)
+  }
 };
 
 const deleteUser = async (req, res) => {
