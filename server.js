@@ -1,10 +1,17 @@
-const express = require("express")
+const express = require("express");
 const app = express();
-require("dotenv/config")
-const PORT = process.env.PORT
+const cors = require("cors");
+const propertyRouter = require("./routes/propertyRoutes");
+require("dotenv/config");
+const PORT = process.env.PORT;
 
-app.get('/', (req, res)=>{
-  res.send({message : "GET request sent"})
-})
+//Middlewares
 
-app.listen(PORT, ()=> console.log (`server listening on http://localhost:${PORT}`));
+app.use(cors());
+app.use(express.json());
+
+app.use("/properties", propertyRouter);
+
+app.listen(PORT, () =>
+  console.log(`server listening on http://localhost:${PORT}`)
+);
