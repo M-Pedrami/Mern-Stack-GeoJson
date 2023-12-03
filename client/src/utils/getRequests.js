@@ -10,4 +10,14 @@ const getProperties = async () =>{
   }
 }
 
-export default  getProperties ;
+const getProperty = async (id) =>{
+  try {
+    const response = await axios.get(`http://localhost:5000/properties/${id}`)
+    return response.data
+  } catch (error) {
+    console.log("ERROR from getProperty hook", error);
+    throw error
+  }
+}
+
+export   {getProperties, getProperty} ;

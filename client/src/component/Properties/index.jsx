@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import  getProperties  from "../../utils/getRequests";
+import  {getProperties}  from "../../utils/getRequests";
 
 export default function index() {
   const [properties, setProperties] = useState([]);
