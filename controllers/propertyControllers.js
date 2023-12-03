@@ -57,7 +57,7 @@ const updateProperty = async (req, res) => {
     const { id } = req.params;
     const { title, description, price, bedrooms, area, image, images, owner, availability } =
       req.body;
-    const response = Property.findByIdAndUpdate(
+    const response = await Property.findByIdAndUpdate(
       { _id: id },
       { title, description, price, bedrooms, area, image, images, owner, availability },
       { new: true }
@@ -78,7 +78,7 @@ const updateProperty = async (req, res) => {
 const deleteProperty = async (req, res) => {
   try {
     const { id } = req.params;
-    const response = Property.findByIdAndDelete({ _id: id });
+    const response = await Property.findByIdAndDelete({ _id: id });
     res.send({
       message: `the property with the id of ${id} got deleted`,
       response,

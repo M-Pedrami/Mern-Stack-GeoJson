@@ -4,3 +4,20 @@
   padding: 2rem;
   text-align: center;
 }
+.parentContainer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+}
+.container{
+  display: flex;
+  padding: 5px;
+  gap: 2rem;
+  border: 1px white solid;
+  border-radius: 5px;
+}
+.container img{
+  width: 350px;
+  border-radius: 5px;
+}
