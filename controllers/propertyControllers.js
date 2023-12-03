@@ -15,7 +15,7 @@ const getProperties = async (req, res) => {
 const getProperty = async (req, res) => {
   try {
     const { id } = req.params;
-    const response = await Property.findById({ _id: id });
+    const response = await Property.findById({ _id:id }).populate("owner");
     if (response) {
       res.send(response);
     } else {
